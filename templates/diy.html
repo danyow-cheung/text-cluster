@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Text Clustering</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename='img/shivang-img.jpg') }}" rel="icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Roboto:100,300,400,500,700|Philosopher:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Bootstrap css -->
+  <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+  <link href="{{ url_for('static', filename='lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.theme.default.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='lib/animate/animate.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='lib/modal-video/css/modal-video.min.css') }}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+
+    <header id="header" class="header header-hide">
+        <div class="container">
+    
+          <div id="logo" class="pull-left">
+            <h1><a href="{{ url_for('index') }}" class="scrollto"><span>Danyow</span>cheung</a></h1>
+          </div>
+    
+          <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li class="menu-active"><a href="{{ url_for('movie_recommend') }}">推荐</a></li>    
+                <li class="menu-active"><a href="{{ url_for('diy_txt') }}">自定义</a></li>
+            </ul>
+          </nav><!-- #nav-menu-container -->
+        </div>
+      </header>
+
+
+    <section id="hero" class="wow fadeIn">
+        <div class="hero-container">
+          
+            <form action="" method="POST">
+                <h1>自定义文本 计算相似度</h1>
+                <h2 style="padding-top:2rem">请输入第一段文字</h2>
+                <input type="text" id="text1" name="text1" size="100" required="required" style="word-break:break-word" ><br><br>
+
+                <h2 style="padding-top:5rem">请输入第二段文字</h2>
+                <input type="text" id="text2" name="text2" size="100" required="required" style="word-break:break-word"><br><br>
+                
+                <button type="submit" class="btn-get-started scrollto">计算相似度</button>
+                
+                
+            </form>
+            {% block content %}
+              相似度为:{{  result  }}
+            {% endblock %} 
+        </div>
+    </section><!-- #hero -->
+
+
+<!-- JavaScript Libraries -->
+<script src="{{ url_for('static', filename='lib/jquery/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/jquery/jquery-migrate.min.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/superfish/hoverIntent.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/superfish/superfish.min.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/modal-video/js/modal-video.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/wow/wow.min.js') }}"></script>
+
+</body>
+</html>
