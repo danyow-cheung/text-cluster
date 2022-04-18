@@ -11,16 +11,15 @@ import os
 import matplotlib.pyplot as plt
 import re 
 
-
-# 接下來只需要捕獲到 輸入的名稱與语料库的内容，比较选出都是类别为same的名字就好了
-rate_lst = []
-# 导入经过label之后的电影标题txt文件
-with codecs.open("utils/cluster_dockmResulttag.txt", 'r', encoding='UTF-8') as f:
-    for i in f:
-        rate_lst.append(i)
-        # print(i)    
 test_txt = ""
 def recommed_main(test_txt):
+    # 接下來只需要捕獲到 輸入的名稱與语料库的内容，比较选出都是类别为same的名字就好了
+    rate_lst = []
+    # 导入经过label之后的电影标题txt文件
+    with codecs.open("utils/cluster_dockmResulttag.txt", 'r', encoding='UTF-8') as f:
+        for i in f:
+            rate_lst.append(i)
+            # print(i)    
     count = 0
     recommend_list = []
     label = ''
@@ -40,12 +39,13 @@ def recommed_main(test_txt):
         if label  in i:
             count += 1
             recommend_list.append(i)
+        
 
     print("匹配总数",count)
-    # print("推荐电影",recommend_list)
+    print("推荐电影",recommend_list)
     #逐行写入文件
     with open("utils/recommend.txt","w")as f:
         for i in recommend_list:
             f.write(str(i))
 
-    return recommend_list
+    #return recommend_list
