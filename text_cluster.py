@@ -44,8 +44,6 @@ def recommed_main(test_txt):
     print("匹配总数",count)
     print("推荐电影",recommend_list)
     #逐行写入文件
-    with open("utils/recommend.txt","w")as f:
+    with open("utils/recommend.txt","w",encoding='UTF-8')as f:
         for i in recommend_list:
             f.write(str(i))
-
-    #return recommend_list

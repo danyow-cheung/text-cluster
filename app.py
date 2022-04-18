@@ -1,5 +1,3 @@
-from concurrent.futures import thread
-from grpc import server
 import numpy as np
 from flask import Flask, request,render_template
 from os import path
@@ -7,8 +5,6 @@ import matplotlib.pyplot as plt
 from word_cut import split_main
 from calculate_sim import simlaritycalu_main
 from text_cluster import recommed_main
-from gevent import monkey,pywsgi
-from gevent.pywsgi import WSGIServer
 import random
 
 app = Flask(__name__)
@@ -32,7 +28,7 @@ def diy_txt():
         print("2:\n",text02)
         
         # 捕捉到的内容写入workspace的原始数据文件夹下
-        with open ("workspace/origin/text01.txt","w") as a,open("workspace/origin/text02.txt","w") as b:
+        with open ("workspace/origin/text01.txt","w",encoding='UTF-8') as a,open("workspace/origin/text02.txt","w",encoding='UTF-8') as b:
             a.write(text01)
             b.write(text02)
         
@@ -57,16 +53,7 @@ def movie_recommend():
       
         print(title)
         print(type(title))
-        # recommed_main(title)
-        # file = open('utils/recommend.txt')
-        # line = file.readline()
-        # data = []
-        # while line:
-        #     data.append(line)
-        #     line = file.readline()
-        # print("type(data)",type(data))
-
-        # random_output = random.sample(data,10) 
+       
         return render_template("result.html")
         # return render_template("recommend.html",result=random_output)
 
@@ -85,7 +72,7 @@ def result_list():
         print(title)
         print(type(title))
         recommed_main(title)
-        file = open('utils/recommend.txt')
+        file = open('utils/recommend.txt',encoding="UTF-8")
         line = file.readline()
         data = []
         while line:
